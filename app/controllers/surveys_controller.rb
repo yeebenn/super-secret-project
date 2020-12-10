@@ -5,11 +5,11 @@ class SurveysController < ApplicationController
     end
     
     def create
-        @user = User.find(params[:user_id])
-        @survey = user.survey.create(survey_params)
+        @user = User.find(params.dig(:survey, :user_id))
+        @survey = @user.surveys.create(survey_params)
         if @survey.save
-            redirect_to @survey
-        else
+            redirect_to survey_path(@survey)
+        else 
             render 'new'
         end
     end
@@ -19,6 +19,7 @@ class SurveysController < ApplicationController
     end
 
     def update
+        
         @survey = Survey.find(params[:id])
 
         if @survey.update(survey_params)
