@@ -1,0 +1,33 @@
+<%= form_with model: @survey, url: surveys_path do |form| %>
+
+<% if @survey.errors.any? %>
+
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@survey.errors.count, "error") %> prohibited
+        this survey from being saved:
+      </h2>
+      <ul>
+        <% @survey.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :questions %><br>
+    <%= form.text_area :questions %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,22 @@
+<h1>Edit ya surveysss bruh</h1>
+
+<%= form_with model: @survey, url: surveys_path do |form| %>
+
+
+<h1>EDIT PAGEEE</h1>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :questions %><br>
+    <%= form.text_area :questions %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
