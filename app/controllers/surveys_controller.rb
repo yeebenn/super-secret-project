@@ -15,15 +15,14 @@ class SurveysController < ApplicationController
     end
 
     def edit
-        @survey = Survey.find(params[:id])
+        @survey = current_user.surveys.find(params[:id])
     end
 
     def update
-        
-        @survey = Survey.find(params[:id])
+        @survey = current_user.surveys.find(params[:id])
 
-        if @survey.update(survey_params)
-          redirect_to @survey
+        if @survey.update_attributes(survey_params)
+          redirect_to survey_path(@survey)
         else
           render 'edit'
         end

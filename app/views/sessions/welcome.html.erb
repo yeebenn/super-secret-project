@@ -1,12 +1,12 @@
-<h1>Welcome</h1>
+<h1>Wassup g!</h1>
 <% if logged_in? %>
-    <h1>You are Logged In, <%= current_user.username %></h1>
+    <h1>You're logged in innit, <%= current_user.username %></h1>
     
     <%= button_to "Current Surveys", '/surveys', method: :get%>
     <%= button_to "Create Survey", '/surveys/new', method: :get%>
     <%= button_to "Sign Out", logout_path, method: :delete%>
 <% else %>
-    <%= button_to "Login", '/login', method: :get%>
+    <%= button_to "Login", login_path, method: :get%>
     <br>
     <%= button_to "Sign-Up", new_user_path, method: :get%>
 <%end%>

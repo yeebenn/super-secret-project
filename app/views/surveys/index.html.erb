@@ -1,13 +1,17 @@
 <h1>Surveys Y'all</h1>
 
 <% @surveys.each do |survey| %>
-    <tr>
-      <td><%= survey.title %></td>
-      <td><%= survey.questions %></td>
-      <td><%= link_to 'Show', survey_path(survey) %></td>
+<div>
+  <ul>
+      <%= survey.title %>
+      <%= survey.questions %>
+      <%= link_to 'Show', survey_path(survey) %>
       <%= link_to 'Edit', edit_survey_path(survey)%>
       <%= link_to 'Delete', survey_path(survey), method: :delete, data: { confirm: "Are you sure?" }%>
-    </tr>
+   </ul>
+  </div>
   <% end %>
+
 <br>
-<%= link_to 'New Survey', new_survey_path%>
+<%= button_to 'New Survey', new_survey_path, method: :get%>
+<%= button_to "Back", root_path, method: :get%>
